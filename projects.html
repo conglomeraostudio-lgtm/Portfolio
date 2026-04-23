@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyectos — Conglomerao</title>
+  <meta name="description" content="Obra de Isabel Yaben Reyes. Pintura, instalación, fotografía y videoarte." />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="projects.css" />
+</head>
+<body>
+
+  <div id="page-transition"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar navbar--dark-text" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Conglomerao</a>
+      <nav class="nav-links" id="nav-links" role="navigation" aria-label="Navegación principal">
+        <a href="index.html"    class="nav-link">Inicio</a>
+        <a href="projects.html" class="nav-link active">Proyectos</a>
+        <a href="about.html"    class="nav-link">Sobre mí</a>
+        <a href="timeline.html" class="nav-link">Trayectoria</a>
+        <a href="contact.html"  class="nav-link">Contacto</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page header -->
+    <section class="projects-header">
+      <div class="projects-header-inner">
+        <p class="projects-count" id="projects-count"></p>
+      </div>
+    </section>
+
+    <!-- Masonry grid — built & randomised by JS -->
+    <section class="projects-grid-wrap" aria-label="Galería de proyectos">
+      <div class="projects-grid" id="projects-grid"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Conglomerao</span>
+      <p class="footer-copy">© 2026 Isabel Yaben Reyes. Madrid, España.</p>
+      <a href="index.html" class="footer-back"> Inicio</a>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script src="projects.js"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+/* ============================================================
+   CONGLOMERAO — base.css
+   Shared styles: tokens, reset, navbar, footer, page transitions
+   ============================================================ */
+
+/* ---------- GOOGLE FONTS ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Kapakana:wght@300..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap');
+
+/* ---------- CSS VARIABLES ---------- */
+:root {
+  --white:   #FFFFFF;
+  --black:   #000000;
+  --red:     #FF0000;
+  --gray-50: #F7F7F7;
+  --gray-100:#EFEFEF;
+  --gray-300:#CCCCCC;
+  --gray-500:#888888;
+
+  --font-display: "Kapakana", cursive;
+  --font-body:    'Sora', sans-serif;
+
+  --ls-display: -0.045em;
+
+  --nav-h: 64px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --max-w:  1280px;
+
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ---------- RESET ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  /* Start hidden for page-in transition */
+  opacity: 0;
+}
+
+body.page-visible { opacity: 1; }
+
+img { display: block; max-width: 100%; height: 100%; object-fit: cover; }
+a   { color: inherit; text-decoration: none; }
+button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+ul, ol { list-style: none; }
+
+/* ============================================================
+   PAGE TRANSITION OVERLAY
+   ============================================================ */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 9999;
+  pointer-events: none;
+  transform: translateY(100%);
+}
+
+/* Transition states */
+#page-transition.slide-in  {
+  animation: ptSlideIn  .55s var(--ease-in-out) forwards;
+}
+#page-transition.slide-out {
+  animation: ptSlideOut .55s var(--ease-in-out) forwards;
+}
+
+@keyframes ptSlideIn {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0%);   }
+}
+@keyframes ptSlideOut {
+  from { transform: translateY(0%);   }
+  to   { transform: translateY(-100%); }
+}
+
+/* Body fade in after transition */
+body {
+  transition: opacity .35s ease;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+  mix-blend-mode: difference; /* Logo stays white over dark, black over light */
+}
+
+/* When on dark hero, switch to explicit white mode */
+.navbar--light-text .nav-logo,
+.navbar--light-text .nav-link {
+  color: var(--white);
+  mix-blend-mode: normal;
+}
+
+.navbar--light-text .bar { background: var(--white); }
+
+.nav-inner {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.35rem;
+  letter-spacing: var(--ls-display);
+  color: var(--white);   /* difference blend makes it correct on any bg */
+  white-space: nowrap;
+  transition: opacity .2s;
+}
+.nav-logo:hover { opacity: .7; }
+
+/* Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.nav-link {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color .25s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--red);
+  transition: width .35s var(--ease-expo);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  padding: 4px;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--white);
+  transition: transform .35s var(--ease-expo), opacity .2s;
+  transform-origin: center;
+}
+
+.hamburger.open .bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open .bar:nth-child(2) { opacity: 0; }
+.hamburger.open .bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    inset: var(--nav-h) 0 0 0;
+    background: var(--black);
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity .4s var(--ease-expo), transform .4s var(--ease-expo);
+  }
+
+  .nav-links.open {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    font-weight: 300;
+    padding: 1.1rem var(--gutter);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    width: 100%;
+    color: var(--white);
+  }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--gray-100);
+  padding: 2.5rem var(--gutter);
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: var(--ls-display);
+  color: var(--red);
+}
+
+.footer-copy {
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: var(--gray-500);
+}
+
+.footer-back {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color .25s;
+}
+.footer-back:hover { color: var(--red); }
+
+/* ============================================================
+   SHARED SECTION UTILITIES
+   ============================================================ */
+.section {
+  padding: clamp(5rem, 10vw, 9rem) var(--gutter);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: .6rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  letter-spacing: var(--ls-display);
+  line-height: .95;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s var(--ease-expo), transform .7s var(--ease-expo);
+}
+.reveal.revealed { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
