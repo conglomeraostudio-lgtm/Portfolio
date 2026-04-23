@@ -167,7 +167,7 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(12rem, 12vw, 12rem);
+  font-size: clamp(7rem, 12vw, 7rem);
   letter-spacing: var(--ls-display);
   text-transform: none;
   color: var(--white);
