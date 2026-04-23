@@ -130,24 +130,26 @@ body {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
 }
 
-/* Logo */
+/* Logo — hidden on desktop, shown on mobile */
 .nav-logo {
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 2.3rem;
+  font-size: 1.2rem;
   letter-spacing: var(--ls-display);
   color: inherit;
   white-space: nowrap;
   transition: opacity .2s;
+  display: none; /* hidden desktop */
 }
 .nav-logo:hover { opacity: .7; }
 
-/* Links */
+/* Links — centrados en desktop */
 .nav-links {
   display: flex;
   align-items: center;
@@ -177,13 +179,15 @@ body {
 .nav-link:hover::after,
 .nav-link.active::after { width: 100%; }
 
-/* Hamburger */
+/* Hamburger — absolute right so it doesn't affect centering */
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
   width: 32px;
   padding: 4px;
+  position: absolute;
+  right: 0;
 }
 
 .bar {
@@ -201,7 +205,23 @@ body {
 
 /* Mobile nav */
 @media (max-width: 768px) {
-  .hamburger { display: flex; }
+  .hamburger {
+    display: flex;
+    position: absolute;
+    right: 0;
+  }
+
+  /* Logo visible on mobile — left side */
+  .nav-logo {
+    display: block;
+    position: absolute;
+    left: 0;
+    font-size: 1rem;
+  }
+
+  .nav-inner {
+    justify-content: center;
+  }
 
   .nav-links {
     position: fixed;

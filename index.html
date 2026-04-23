@@ -3,26 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proyectos — Conglomerao</title>
-  <meta name="description" content="Obra de Isabel Yaben Reyes. Pintura, instalación, fotografía y videoarte." />
+  <title>Isabel Yaben Reyes</title>
+  <meta name="description" content="Portfolio artístico de Isabel Yaben Reyes. Arte contemporáneo desde Cáceres, España." />
   <link rel="stylesheet" href="base.css" />
-  <link rel="stylesheet" href="projects.css" />
+  <link rel="stylesheet" href="home.css" />
 </head>
 <body>
 
+  <!-- Page transition overlay -->
   <div id="page-transition"></div>
 
-  <!-- NAVBAR -->
-  <header class="navbar navbar--dark-text" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Isabel Yaben Reyes</a>
+  <!-- ========== INTRO SCREEN ========== -->
+  <div class="intro-screen" id="intro-screen" role="region" aria-label="Pantalla de bienvenida">
+    <div class="intro-noise" aria-hidden="true"></div>
+
+    <h1 class="intro-logo" id="intro-logo" aria-label="Conglomerao">
+      Isabel Yaben Reyes
+    </h1>
+
+    <p class="intro-sub" aria-hidden="true">el sentimiento de la obra</p>
+
+    <button class="intro-btn" id="intro-btn" aria-label="Continuar al portfolio">
+      <span class="intro-btn-inner">
+        <span class="intro-btn-text">Continuar</span>
+      </span>
+    </button>
+  </div>
+
+  <!-- ========== MAIN SITE ========== -->
+  <div class="site-wrapper" id="site-wrapper">
+
+    <!-- NAVBAR -->
+<header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Isabel Yaben Reyes</a>
 
         <nav class="nav-links" id="nav-links" role="navigation" aria-label="Navegación principal">
-          <a href="index.html"    class="nav-link ">Inicio</a>
-          <a href="projects.html" class="nav-link active">Proyectos</a>
-          <a href="about.html"    class="nav-link ">Sobre mí</a>
-          <a href="timeline.html" class="nav-link ">Trayectoria</a>
-          <a href="contact.html"  class="nav-link ">Contacto</a>
+          <a href="index.html"    class="nav-link active">Inicio</a>
+          <a href="projects.html" class="nav-link">Proyectos</a>
+          <a href="about.html"    class="nav-link">Sobre mí</a>
+          <a href="timeline.html" class="nav-link">Trayectoria</a>
+          <a href="contact.html"  class="nav-link">Contacto</a>
         </nav>
 
         <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -31,33 +52,108 @@
           <span class="bar"></span>
         </button>
       </div>
-  </header>
+    </header>
 
-  <main>
+    <!-- HERO CAROUSEL -->
+    <main>
+      <section class="hero-section" aria-label="Proyectos destacados">
 
-    <!-- Page header -->
-    <section class="projects-header">
-      <div class="projects-header-inner">
-        <p class="projects-count" id="projects-count"></p>
-      </div>
-    </section>
+        <!-- Artist name centred over the carousel -->
+        <div class="hero-name-wrap" aria-label="Nombre de la artista">
+          <p class="hero-name">Isabel Yaben Reyes</p>
+        </div>
 
-    <!-- Masonry grid — built & randomised by JS -->
-    <section class="projects-grid-wrap" aria-label="Galería de proyectos">
-      <div class="projects-grid" id="projects-grid"></div>
-    </section>
+        <!-- Carousel -->
+        <div class="carousel" id="carousel" role="region" aria-label="Carrusel de proyectos">
 
-  </main>
+          <div class="carousel-track" id="carousel-track">
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span class="footer-logo">Conglomerao</span>
-      <p class="footer-copy">© 2026 Isabel Yaben Reyes. Madrid, España.</p>
-      <a href="index.html" class="footer-back"> Inicio</a>
-    </div>
-  </footer>
+            <div class="carousel-slide" data-index="0">
+              <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1600&q=85" alt="Sedimento I, 2024" loading="eager" />
+              <div class="slide-overlay" aria-hidden="true"></div>
+              <div class="slide-info">
+                <span class="slide-year">2024</span>
+                <h2 class="slide-title">Sedimento I</h2>
+                <span class="slide-cat">Pintura</span>
+              </div>
+            </div>
+
+            <div class="carousel-slide" data-index="1">
+              <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1600&q=85" alt="Acumulación, 2023" loading="lazy" />
+              <div class="slide-overlay" aria-hidden="true"></div>
+              <div class="slide-info">
+                <span class="slide-year">2023</span>
+                <h2 class="slide-title">Acumulación</h2>
+                <span class="slide-cat">Instalación</span>
+              </div>
+            </div>
+
+            <div class="carousel-slide" data-index="2">
+              <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=1600&q=85" alt="Ruido Blanco, 2023" loading="lazy" />
+              <div class="slide-overlay" aria-hidden="true"></div>
+              <div class="slide-info">
+                <span class="slide-year">2023</span>
+                <h2 class="slide-title">Ruido Blanco</h2>
+                <span class="slide-cat">Pintura</span>
+              </div>
+            </div>
+
+            <div class="carousel-slide" data-index="3">
+              <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=1600&q=85" alt="Grieta, 2022" loading="lazy" />
+              <div class="slide-overlay" aria-hidden="true"></div>
+              <div class="slide-info">
+                <span class="slide-year">2022</span>
+                <h2 class="slide-title">Grieta</h2>
+                <span class="slide-cat">Fotografía</span>
+              </div>
+            </div>
+
+            <div class="carousel-slide" data-index="4">
+              <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=1600&q=85" alt="Vacío Habitado, 2022" loading="lazy" />
+              <div class="slide-overlay" aria-hidden="true"></div>
+              <div class="slide-info">
+                <span class="slide-year">2022</span>
+                <h2 class="slide-title">Vacío Habitado</h2>
+                <span class="slide-cat">Dibujo</span>
+              </div>
+            </div>
+
+          </div><!-- /carousel-track -->
+
+          <!-- Prev / Next -->
+          <button class="carousel-btn carousel-btn--prev" id="carousel-prev" aria-label="Proyecto anterior">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M13 5L7 11L13 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <button class="carousel-btn carousel-btn--next" id="carousel-next" aria-label="Proyecto siguiente">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M9 5L15 11L9 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <!-- Dots -->
+          <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Seleccionar diapositiva"></div>
+
+          <!-- Auto-play progress bar -->
+          <div class="carousel-progress" aria-hidden="true">
+            <div class="carousel-progress-bar" id="carousel-progress-bar"></div>
+          </div>
+
+          <!-- CTA -->
+          <a href="projects.html" class="carousel-cta" aria-label="Ver todos los proyectos">
+            <span>Ver todos los proyectos</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+          </a>
+
+        </div><!-- /carousel -->
+      </section>
+    </main>
+
+  </div><!-- /site-wrapper -->
 
   <script src="shared.js"></script>
-  <script src="projects.js"></script>
+  <script src="home.js"></script>
 </body>
 </html>

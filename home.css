@@ -163,20 +163,24 @@
 }
 
 .hero-name {
-  font-family: var(--white);
+  font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   font-size: clamp(2rem, 6vw, 6rem);
-  text-transform: uppercase;
+  letter-spacing: var(--ls-display);
+  text-transform: none;
   color: var(--white);
   line-height: 1;
-  /* Mix-blend so it reads over any image */
   mix-blend-mode: overlay;
   opacity: 0;
-  /* Animated in by home.js after intro */
   transition: opacity .9s ease, transform .9s var(--ease-expo);
   transform: translateY(8px);
+}
+
+/* Ocultar en móvil */
+@media (max-width: 768px) {
+  .hero-name-wrap { display: none; }
 }
 
 .hero-name.visible {
