@@ -35,7 +35,7 @@ align-self: center;
 /* ---- Grid wrap ---- */
 .projects-grid-wrap {
 padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(4rem, 8vw, 7rem);
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
 }
 

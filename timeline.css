@@ -81,7 +81,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;  /* stick to the line */
-  padding: 1rem clamp(1rem, 2vw, 1.75rem) 1.75rem;
+  padding: 0.5rem clamp(1rem, 2vw, 1.75rem) 0.9rem;
 }
 
 /* Dot sits exactly on the line */
@@ -112,7 +112,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;  /* stick to the line */
-  padding: 1.75rem clamp(1rem, 2vw, 1.75rem) 1rem;
+  padding: 0.9rem clamp(1rem, 2vw, 1.75rem) 0.5rem;
 }
 
 /* Odd entries: year+name on top, place on bottom */
@@ -121,8 +121,8 @@
 .timeline-entry:nth-child(odd) .entry-bottom { order: 3; }
 
 /* Even entries: place on top, year+name on bottom */
-.timeline-entry:nth-child(even) .entry-top    { order: 3; justify-content: flex-start;  padding-top: 1.75rem; padding-bottom: 1rem; }
-.timeline-entry:nth-child(even) .entry-bottom { order: 1; justify-content: flex-end;    padding-top: 1rem;    padding-bottom: 1.75rem; }
+.timeline-entry:nth-child(even) .entry-top    { order: 3; justify-content: flex-start;  padding-top: 0.9rem; padding-bottom: 0.5rem; }
+.timeline-entry:nth-child(even) .entry-bottom { order: 1; justify-content: flex-end;    padding-top: 0.5rem;  padding-bottom: 0.9rem; }
 .timeline-entry:nth-child(even) .entry-dot    { order: 2; }
 
 /* ---- Year ---- */
